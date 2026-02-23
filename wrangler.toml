@@ -1,0 +1,35 @@
+name = "site-canto-certo"
+compatibility_date = "2024-01-01"
+
+[build]
+command = "npm run build"
+
+[site]
+bucket = "./out"
+entry-point = "./"
+
+[env.production]
+name = "site-canto-certo-prod"
+
+# Configurações de variáveis de ambiente
+[vars]
+NODE_ENV = "production"
+
+# Segredos (serão configurados via Cloudflare Dashboard)
+# SUPABASE_URL = ""
+# SUPABASE_ANON_KEY = ""
+# SUPABASE_SERVICE_KEY = ""
+# NEXT_PUBLIC_SUPABASE_URL = ""
+# NEXT_PUBLIC_SUPABASE_ANON_KEY = ""
+# STRIPE_SECRET_KEY = ""
+# NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY = ""
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "seu-kv-namespace-id"
+preview_id = "seu-kv-preview-id"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "site-canto-certo-db"
+database_id = "seu-database-id"
