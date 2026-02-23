@@ -16,10 +16,13 @@ export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
     detectSessionInUrl: true,
     flowType: 'pkce',
     storage: typeof window !== 'undefined' ? window.localStorage : undefined,
+    storageKey: 'canto-certo-auth',
   },
   global: {
     headers: {
       'x-application-name': 'canto-certo',
+      'Access-Control-Allow-Origin': 'https://beatwapproducoes.pages.dev',
+      'Access-Control-Allow-Credentials': 'true',
     },
   },
   db: {

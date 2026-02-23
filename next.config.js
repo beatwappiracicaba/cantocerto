@@ -22,6 +22,22 @@ const nextConfig = {
     // Variáveis serão configuradas via Cloudflare Pages
   },
   
+  // Configurações de rewrites para proxy do Supabase (funciona apenas em modo server)
+  // Para export estático, configure CORS no dashboard do Supabase
+  async headers() {
+    return [
+      {
+        source: '/api/:path*',
+        headers: [
+          { key: 'Access-Control-Allow-Credentials', value: 'true' },
+          { key: 'Access-Control-Allow-Origin', value: 'https://beatwapproducoes.pages.dev' },
+          { key: 'Access-Control-Allow-Methods', value: 'GET,DELETE,PATCH,POST,PUT' },
+          { key: 'Access-Control-Allow-Headers', value: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization' },
+        ]
+      }
+    ]
+  },
+  
   // Desabilitar features que não funcionam em export estático
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
